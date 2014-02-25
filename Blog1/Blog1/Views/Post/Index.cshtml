@@ -1,0 +1,37 @@
+﻿@using Blog1.Models;
+@model IEnumerable<Post>
+@{
+
+   ViewBag.Title = "Index";
+   bool isPreviousLinkVisible = ViewBag.IsPreviousLinkVisible ?? false;
+   bool isNextLinkVisible = ViewBag.IsNextLinkVisible ?? false;
+}
+  @foreach (Post post in Model)
+  {
+     @DisplayHelper.Render(post, Html)
+  }  
+
+@if (isPreviousLinkVisible)
+{
+        <a id="previousLink" href="@Href("~/Post/Index/" + (ViewBag.PageNumber -1))">&lt; Previous Page</a>
+}
+<br />
+@if (isNextLinkVisible)
+{
+        <a id="nextLink" href="@Href("~/Post/Index/" + (ViewBag.PageNumber +1))"> Next Page &gt;</a>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <br />
+    <br />
+@Html.ActionLink("Return Home", "Home")<br />
+
+</body>
+</html>

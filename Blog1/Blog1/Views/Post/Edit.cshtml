@@ -1,0 +1,23 @@
+﻿@model Blog1.Models.Post
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create A New Post</h2>
+
+<form action="@Href("~/Post/Update")" method="post" id="postForm">
+    @if (Model.ID != -1)
+    {
+     <input type ="hidden" name="id" value="@Model.ID" />   
+    }
+    @{ DateTime dateTime = Model.PostDate.Year > 2000 ? Model.PostDate : DateTime.Now;}
+    <input type="text" name="PostDate" value="@dateTime" /> Date<br />
+    <input type="text" name="title" value="@Model.Title" /> Title<br />
+    <textarea name="body" rows="10" cols="80">@Model.Body</textarea >
+    <br />
+    <input type="submit" name="submit" value="Submit" />
+</form>
+<form action ="@Href("~/Post/Home")"  method="post" id="postForm2">
+<input type="submit" name="Back" value="Back" />
+</form>

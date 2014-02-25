@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<head>
+    <title>Welcome To Karl's Blog</title>
+</head>
+<body>
+    <div id="header">
+        <img src="@Href("~/Content/Images/PrettyBird.jpg")" alt="Karl's Blog"</img>
+    </div>
+</body>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div>
+
+    @Html.ActionLink("Let's Create Posts", "Edit")<br />
+    @Html.ActionLink("Let's View Created Posts", "Index")
+
+    </div>
+    <div id="footer">
+        <div id="copyright"> Copyright &copy 2013, Karl Ludwigsen</div>
+    </div>
+</body>
+</html>
