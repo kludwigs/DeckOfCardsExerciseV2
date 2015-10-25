@@ -50,5 +50,16 @@ namespace CardUnitTestProject
             testdeck.Sort();
             Assert.AreEqual(testdeck.AreCardsUnique(), true);
         }
+        public void TwoDeck_ShuffleOneSortOther_BothHaveKeepState()
+        {
+            Deck testdeck = new Deck();
+            Deck testdeck2 = new Deck();
+            testdeck.Shuffle();
+            testdeck.Sort();
+            testdeck2.Shuffle();
+
+            Assert.AreEqual(testdeck.IsSorted(), true);
+            Assert.AreEqual(testdeck2.IsSorted(), false);
+        }
     }
 }
