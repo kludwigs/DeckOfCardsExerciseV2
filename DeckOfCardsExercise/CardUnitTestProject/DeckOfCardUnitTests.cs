@@ -6,7 +6,15 @@ namespace CardUnitTestProject
 {
     [TestClass]
     public class DeckOfCardUnitTests
-    {        
+    {
+        [TestMethod]
+        public void OneDeck_DeckContains52Cards_IsTrue()
+        {
+            Deck testdeck = new Deck();
+
+            Assert.AreEqual(testdeck.Cards.Count == 52, true);
+        }     
+
         [TestMethod]
         public void OneDeck_IsItSortedWhenInitialized_WillBeSorted()
         {
