@@ -100,7 +100,7 @@ namespace DeckOfCards
                     }
                 }
             }
-            /* If all position are correct then the cards must be sorted */
+            /* If all positions are correct then the cards must be sorted */
             return true;
         }
         public bool AreCardsUnique()
@@ -130,7 +130,7 @@ namespace DeckOfCards
         public Card DealCard()
         {
             if (currentCard < Cards.Count)
-                return (Cards[currentCard]);
+                return (Cards[currentCard++]);
             else
                 /* No More Cards */
                 return null;
@@ -145,10 +145,13 @@ namespace DeckOfCards
             int i = 1;
             
             bool tmp = deck1.AreCardsUnique();
-
-            foreach (var card in deck1.Cards)
-                Console.WriteLine("({0}) drew a {1}",i++, Card.GetCardName(card));
-            
+            if (tmp && deck1.Cards.Count() == 52)            
+                Console.WriteLine("We have 52 card and no duplicates - we have an official set!\n\n");
+                        
+            for(Card tmpcard = deck1.DealCard(); tmpcard !=null; tmpcard = deck1.DealCard())
+            {
+                Console.Write("drew: a(n)  {0}\n", Card.GetCardName(tmpcard));
+            }            	                                
            
             Console.WriteLine("\n\nLet's Shuffle The Deck!\n\n");
 
@@ -167,10 +170,11 @@ namespace DeckOfCards
             {
                 Console.WriteLine("\nYes the Deck is Sorted\n");
             }
+
             i = 1;
 
             foreach (var card in deck1.Cards)
-                Console.WriteLine("({0}) drew a {1}", i++, Card.GetCardName(card));
+                Console.WriteLine("({0}) drew a(n) {1}", i++, Card.GetCardName(card));
 
             Console.ReadLine();
         }
