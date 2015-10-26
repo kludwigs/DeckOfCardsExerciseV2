@@ -36,21 +36,23 @@ namespace CardUnitTestProject
             Deck testdeck = new Deck();
             Assert.AreEqual(testdeck.AreCardsUnique(), true);
         }
-
-        public void OneDeck_InitializeThenShuffle_NoDulicates()
+        [TestMethod]
+        public void OneDeck_InitializeThenShuffle_NoDuplicates()
         {
             Deck testdeck = new Deck();
             testdeck.Shuffle();
             Assert.AreEqual(testdeck.AreCardsUnique(), true);
         }
-        public void OneDeck_InitializeThenShuffleThenSort_NoDulicates()
+        [TestMethod]
+        public void OneDeck_InitializeThenShuffleThenSort_NoDuplicates()
         {
             Deck testdeck = new Deck();
             testdeck.Shuffle();
             testdeck.Sort();
             Assert.AreEqual(testdeck.AreCardsUnique(), true);
         }
-        public void TwoDeck_ShuffleOneSortOther_BothHaveKeepState()
+        [TestMethod]
+        public void TwoDeck_ShuffleOneSortOther_BothHaveKeptState()
         {
             Deck testdeck = new Deck();
             Deck testdeck2 = new Deck();
