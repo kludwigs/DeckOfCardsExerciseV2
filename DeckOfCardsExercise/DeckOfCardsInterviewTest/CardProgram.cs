@@ -98,7 +98,7 @@ namespace DeckOfCards
                     int index = FindCardIndex(j, i);
                     if (index == -1)
                         continue;
-                    /* Go through the list find the element verify at right index */
+                    /* Go through the list find the element and verify at right index */
                     if (index != sortposition++)
                     {
                         return false;

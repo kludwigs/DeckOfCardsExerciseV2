@@ -103,5 +103,18 @@ namespace CardUnitTestProject
             Assert.AreEqual(testdeck.Cards.Count == 53, true);
             Assert.AreEqual(testdeck.AreCardsUnique(), false);
         }
+        [TestMethod]
+        public void OneDeck_RemoveACard_CardsWillRemainSorted()
+        {
+            Deck testdeck = new Deck();
+            testdeck.InitializeFullDeck();
+
+            Random rnd = new Random();
+            var numOfCards = testdeck.Cards.Count;
+
+            testdeck.Cards.RemoveAt(rnd.Next(numOfCards));
+            Assert.AreEqual(testdeck.AreCardsUnique(), true);
+            Assert.AreEqual(testdeck.IsSorted(), true);
+        }
     }
 }
