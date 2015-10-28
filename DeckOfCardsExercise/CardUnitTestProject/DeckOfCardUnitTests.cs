@@ -11,110 +11,46 @@ namespace CardUnitTestProject
         public void OneDeck_DeckContains52Cards_IsTrue()
         {
             Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-
-            Assert.AreEqual(testdeck.Cards.Count == 52, true);
+            testdeck.InitalizeTupCards();
+            Assert.AreEqual(testdeck.TupCards.Count, 52);
         }
-
         [TestMethod]
-        public void OneDeck_IsItSortedWhenInitialized_WillBeSorted()
+        public void OneDeck_ItemsUnique_IsTrue()
         {
             Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-            Assert.AreEqual(testdeck.IsSorted(), true);
+            testdeck.InitalizeTupCards();
+            var my = testdeck.TupCards.ToArray();
+            CollectionAssert.AllItemsAreUnique(my, "all items are not unique");
         }
-
         [TestMethod]
-        public void OneDeck_DeckShuffled_WillNotBeSorted()
+        public void OneDeck_AllItemsAreNotNull_NoCardsAreNull()
         {
             Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
+            testdeck.InitalizeTupCards();
+            var my = testdeck.TupCards.ToArray();
+            CollectionAssert.AllItemsAreNotNull(my, "all items are not null");
+        }
+        [TestMethod]
+        public void TwoDecks_ShuffleADeckAndCompareToSortedDeck()
+        {
+            Deck testdeck = new Deck();
+            testdeck.InitalizeTupCards();
             testdeck.Shuffle();
-            Assert.AreEqual(testdeck.IsSorted(), false);
+            var my = testdeck.TupCards.ToArray();
+            var my2 = SortedTestDeck.Instance.Cards.ToArray();
+            CollectionAssert.AreNotEqual(my, my2);
         }
         [TestMethod]
-        public void OneDeck_ShuffledThenSorted_WillBeSorted()
+        public void TwoDecks_SortADeckAndCompareToSortedDeck()
         {
             Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-            testdeck.Shuffle();
-            testdeck.Sort();
-            Assert.AreEqual(testdeck.IsSorted(), true);
-        }
-        [TestMethod]
-        public void OneDeck_InitializeT_NoDuplicates()
-        {
-            Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-            Assert.AreEqual(testdeck.AreCardsUnique(), true);
-        }
-        [TestMethod]
-        public void OneDeck_InitializeThenShuffle_NoDuplicates()
-        {
-            Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-            testdeck.Shuffle();
-            Assert.AreEqual(testdeck.AreCardsUnique(), true);
-        }
-        [TestMethod]
-        public void OneDeck_InitializeThenShuffleThenSort_NoDuplicates()
-        {
-            Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
+            testdeck.InitalizeTupCards();
             testdeck.Shuffle();
             testdeck.Sort();
-            Assert.AreEqual(testdeck.AreCardsUnique(), true);
-        }
-        [TestMethod]
-        public void TwoDeck_ShuffleOneSortOther_BothHaveKeptState()
-        {
-            Deck testdeck = new Deck();
-            Deck testdeck2 = new Deck();
+            var my = testdeck.TupCards.ToArray();
+            var my2 = SortedTestDeck.Instance.Cards.ToArray();
 
-            testdeck.InitializeFullDeck();
-            testdeck2.InitializeFullDeck();
-
-            testdeck.Shuffle();
-            testdeck.Sort();
-            testdeck2.Shuffle();
-
-            Assert.AreEqual(testdeck.IsSorted(), true);
-            Assert.AreEqual(testdeck2.IsSorted(), false);
-        }
-        [TestMethod]
-        public void OneDeck_CreateTwoCardsTheSameSuitAndValue_DeckCardsWillNotBeUnique()
-        {
-            Deck testdeck = new Deck();
-            testdeck.Cards.Add(new Card { cardsuit = 1, cardvalue = 3 });
-            testdeck.Cards.Add(new Card { cardsuit = 3, cardvalue = 1 });
-            testdeck.Cards.Add(new Card { cardsuit = 1, cardvalue = 3 });
-
-            Assert.AreEqual(testdeck.Cards.Count == 3, true);
-
-            Assert.AreEqual(testdeck.AreCardsUnique(), false);
-        }
-        [TestMethod]
-        public void OneDeck_CreateTwoCardsTheSameSuitAndValueOnFullDeck_DeckCardsWillNotBeUnique()
-        {
-            Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-            testdeck.Cards.Add(new Card { cardsuit = 1, cardvalue = 3 });
-
-            Assert.AreEqual(testdeck.Cards.Count == 53, true);
-            Assert.AreEqual(testdeck.AreCardsUnique(), false);
-        }
-        [TestMethod]
-        public void OneDeck_RemoveACard_CardsWillRemainSorted()
-        {
-            Deck testdeck = new Deck();
-            testdeck.InitializeFullDeck();
-
-            Random rnd = new Random();
-            var numOfCards = testdeck.Cards.Count;
-
-            testdeck.Cards.RemoveAt(rnd.Next(numOfCards));
-            Assert.AreEqual(testdeck.AreCardsUnique(), true);
-            Assert.AreEqual(testdeck.IsSorted(), true);
+            CollectionAssert.AreEqual(my, my2);
         }
     }
 }
