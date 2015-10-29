@@ -12,7 +12,6 @@ namespace DeckOfCards
         {
             Deck deck1 = new Deck();
 
-
             /* Read The Initalized Cards */
             foreach (var card in deck1.TupCards)
             {

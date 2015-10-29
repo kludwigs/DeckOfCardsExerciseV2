@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCards", "DeckOfCardsInterviewTest\DeckOfCards.csproj", "{A745C41D-1E5A-4D64-9F47-B20266ACF3E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCards", "DeckOfCardsExercise\DeckOfCards.csproj", "{A745C41D-1E5A-4D64-9F47-B20266ACF3E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCardsUnitTest", "CardUnitTestProject\DeckOfCardsUnitTest.csproj", "{143B1A82-87F0-434B-A3C1-53E614686E55}"
 EndProject

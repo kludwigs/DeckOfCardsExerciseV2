@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeckOfCardsInterviewTest\DeckOfCards.csproj">
+    <ProjectReference Include="..\DeckOfCardsExercise\DeckOfCards.csproj">
       <Project>{a745c41d-1e5a-4d64-9f47-b20266acf3e0}</Project>
       <Name>DeckOfCards</Name>
     </ProjectReference>
