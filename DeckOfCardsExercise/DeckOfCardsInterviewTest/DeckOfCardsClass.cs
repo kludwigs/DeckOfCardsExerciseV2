@@ -57,7 +57,7 @@ namespace DeckOfCards
             /* Sort By Suit Then by Value */
             TupCards = TupCards.OrderBy(x => x.Item2).ThenBy(x => x.Item1).ToList();
         }
-        public void InitalizeTupCards()
+        public Deck()
         {
             TupCards.Clear();
 

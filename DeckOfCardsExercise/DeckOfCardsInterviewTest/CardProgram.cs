@@ -12,9 +12,6 @@ namespace DeckOfCards
         {
             Deck deck1 = new Deck();
 
-            /*Initialize The Deck */
-            Console.Write("Initialize The Deck\n\n");
-            deck1.InitalizeTupCards();
 
             /* Read The Initalized Cards */
             foreach (var card in deck1.TupCards)
